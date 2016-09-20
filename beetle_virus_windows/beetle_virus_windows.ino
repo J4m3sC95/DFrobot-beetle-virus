@@ -1,3 +1,11 @@
+/*
+ * DF Robot beetle Virus
+ * 
+ * This sketch acts as a keyboard and initiates a fork bomb
+ * style "virus" causing the connected computer to crash
+ * 
+ */
+
 #include <Keyboard.h>
 
 void setup() {
